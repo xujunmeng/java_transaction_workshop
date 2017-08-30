@@ -8,9 +8,13 @@ package davenkin;
  * To change this template use File | Settings | File Templates.
  */
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.SourceLoader;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import javax.sql.DataSource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class DataSourceFactory
 {
@@ -19,10 +23,18 @@ public class DataSourceFactory
 
     static
     {
-        dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-        dataSource.setUsername("SA");
-        dataSource.setPassword("");
-        dataSource.setUrl("jdbc:hsqldb:mem:bank");
+        Properties p=new Properties();
+
+        InputStream is=SourceLoader.class.getClassLoader().getSystemResourceAsStream("jdbc.properties");
+        try {
+            p.load(is);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dataSource.setDriverClassName(p.getProperty("driverClassName"));
+        dataSource.setUsername(p.getProperty("userName"));
+        dataSource.setPassword(p.getProperty("password"));
+        dataSource.setUrl(p.getProperty("url"));
     }
 
     public static DataSource createDataSource()

@@ -21,10 +21,17 @@
     </properties>
 
   <dependencies>
+      <!-- hsqldb配置 -->
       <dependency>
           <groupId>org.hsqldb</groupId>
           <artifactId>hsqldb</artifactId>
           <version>2.2.8</version>
+      </dependency>
+      <!-- mysql配置 -->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.38</version>
       </dependency>
       <!-- commons -->
       <dependency>

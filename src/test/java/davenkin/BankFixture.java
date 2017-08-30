@@ -17,33 +17,6 @@ public class BankFixture
 
     protected final DataSource dataSource = DataSourceFactory.createDataSource();
 
-    @Before
-    public void setUp() throws SQLException
-    {
-        Connection connection = dataSource.getConnection();
-        Statement statement = connection.createStatement();
-
-        statement.execute("DROP TABLE BANK_ACCOUNT IF EXISTS");
-        statement.execute("DROP TABLE INSURANCE_ACCOUNT IF EXISTS");
-        statement.execute("CREATE TABLE BANK_ACCOUNT (\n" +
-                "BANK_ID INT,\n" +
-                "BANK_AMOUNT INT,\n" +
-                "PRIMARY KEY(BANK_ID)\n" +
-                ");");
-
-        statement.execute("CREATE TABLE INSURANCE_ACCOUNT (\n" +
-                "INSURANCE_ID INT,\n" +
-                "INSURANCE_AMOUNT INT,\n" +
-                "PRIMARY KEY(INSURANCE_ID)\n" +
-                ");");
-
-        statement.execute("INSERT INTO BANK_ACCOUNT VALUES (1111, 1000);");
-        statement.execute("INSERT INTO INSURANCE_ACCOUNT VALUES (2222, 1000);");
-
-        statement.close();
-        connection.close();
-    }
-
     protected int getBankAmount(int bankId) throws SQLException
     {
         Connection connection = dataSource.getConnection();
