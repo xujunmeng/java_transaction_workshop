@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class SingleThreadConnectionHolder
 {
-    private static ThreadLocal<ConnectionHolder> localConnectionHolder = new ThreadLocal<ConnectionHolder>();
+    private static ThreadLocal<ConnectionHolder> localConnectionHolder = new ThreadLocal<>();
 
     public static Connection getConnection(DataSource dataSource) throws SQLException
     {
