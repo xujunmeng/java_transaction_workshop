@@ -1,9 +1,10 @@
 package davenkin;
 
-import org.junit.Before;
-
 import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Created with IntelliJ IDEA.
