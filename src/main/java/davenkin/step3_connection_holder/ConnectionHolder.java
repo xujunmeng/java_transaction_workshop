@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ConnectionHolder
 {
-    private Map<DataSource, Connection> connectionMap = new HashMap<DataSource, Connection>();
+    private Map<DataSource, Connection> connectionMap = new HashMap<>();
 
     public Connection getConnection(DataSource dataSource) throws SQLException
     {
